@@ -1,0 +1,29 @@
+/* CartDetails.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.cart-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.cart-item img {
+  max-width: 100px;
+  max-height: 100px;
+  margin-right: 10px;
+}
+
+.remove-from-cart {
+  cursor: pointer;
+  color: red;
+  text-decoration: underline;
+  margin-top: 5px;
+}
+
+.cart-total {
+  font-weight: bold;
+  margin-top: 10px;
+}

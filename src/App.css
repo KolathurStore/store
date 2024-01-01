@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+/* Navbar.css */
+.navbar {
+  background-color: #333;
+  padding: 10px;
+}
+
+.nav-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* Move display: flex; to the ul element */
+}
+
+.nav-item {
+  margin-right: 10px;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.nav-item a:hover {
+  background-color: #555;
+}
+

@@ -1,0 +1,24 @@
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 1fr)); /* Adjust minmax values as needed */
+    gap: 2px;
+    /* You can adjust the size as needed */
+     
+    
+  }
+  
+  .product-item {
+    text-align: center;
+  }
+  
+  .product-image {
+    width: 100%;
+    height: auto;
+    max-height: 100%; /* Set a maximum height if needed */
+
+  }
+  
+  .product-name {
+    margin-top: 10px;
+  }
+  
