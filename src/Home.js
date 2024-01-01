@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as XLSX from 'xlsx';
 import './ProductGrid.css';
-
+import xl from './images/Kolathur.xlsx';
 import {Link} from 'react-router-dom';
 function Home() {
   const [isMenuVisible, setMenuVisibility] = useState(false);
@@ -14,7 +14,7 @@ function Home() {
 
   useEffect(() => {
     // Load the static XLSX file data
-    fetch('/Kolathur.xlsx')
+    fetch(xl)
       .then((response) => response.arrayBuffer())
       .then((data) => {
         const workbook = XLSX.read(data, { type: 'array' });

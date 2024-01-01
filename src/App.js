@@ -1,7 +1,7 @@
 // App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import myImage from './images/Cart.jpg';
 import {Link} from 'react-router-dom';
 import CartDetails from './CartDetails';
 import Cards from './Cards';
@@ -21,7 +21,7 @@ const App = () => {
      
       <Link to="/CartDetails">
       
-      <img src="/Cart.jpg" alt="" padding='right' width="50px" height="60px"/>
+      <img src={myImage} alt="" padding='right' width="50px" height="60px"/>
         </Link>
         <nav style={{ backgroundColor: '#333', padding: '10px' }}>
       <ul style={{ listStyleType: 'none', margin: 0, padding: 0, display: 'flex' }}>
