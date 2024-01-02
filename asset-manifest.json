@@ -1,17 +1,16 @@
 {
   "files": {
     "main.css": "/store/static/css/main.5d616b78.css",
-    "main.js": "/store/static/js/main.5c66caa6.js",
+    "main.js": "/store/static/js/main.5fce6025.js",
     "static/js/787.aef1921d.chunk.js": "/store/static/js/787.aef1921d.chunk.js",
-    "static/media/Kolathur.xlsx": "/store/static/media/Kolathur.6c6c6acfef938422349e.xlsx",
     "static/media/Cart.jpg": "/store/static/media/Cart.4b78fcbf34d2310d9744.jpg",
     "index.html": "/store/index.html",
     "main.5d616b78.css.map": "/store/static/css/main.5d616b78.css.map",
-    "main.5c66caa6.js.map": "/store/static/js/main.5c66caa6.js.map",
+    "main.5fce6025.js.map": "/store/static/js/main.5fce6025.js.map",
     "787.aef1921d.chunk.js.map": "/store/static/js/787.aef1921d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5d616b78.css",
-    "static/js/main.5c66caa6.js"
+    "static/js/main.5fce6025.js"
   ]
 }
