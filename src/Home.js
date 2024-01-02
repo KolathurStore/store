@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as XLSX from 'xlsx';
 import './ProductGrid.css';
-import xl from './images/Kolathur.xlsx';
 import {Link} from 'react-router-dom';
 function Home() {
   const [isMenuVisible, setMenuVisibility] = useState(false);
@@ -14,7 +13,7 @@ function Home() {
 
   useEffect(() => {
     // Load the static XLSX file data
-    fetch(xl)
+    fetch(process.env.PUBLIC_URL + '/Kolathur.xlsx')
       .then((response) => response.arrayBuffer())
       .then((data) => {
         const workbook = XLSX.read(data, { type: 'array' });
@@ -66,13 +65,13 @@ teststring = teststring+element[1];
 
       {filteredData && filteredData.length > 0 ? (
         <div>
-          <h2>CARDS Data:</h2>
+         
        
           <div className="product-grid">
       {urls.map((row,index) => (
      <Link to={images[index]}>
         <div key={index} className="product-item" >
-          <img src={row} alt="" className="product-image" />
+          <img src={process.env.PUBLIC_URL + row} alt="" className="product-image" />
           <h4>{title[index]}</h4> 
         </div>
         </Link>

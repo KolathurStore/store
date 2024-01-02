@@ -41,8 +41,9 @@ console.log("replacedString",replacedString);
   
   const productData = {
     name: {userId2}.userId2,
-    description: "(Pages) :"+{userId3}.userId3+" (NoteSize) :"+{userId4}.userId4+" (Ruling Type) "+{userId5}.userId5,
-    price: prizing,
+    
+  description:"",
+   price: prizing,
     images: myArray
   };
 
@@ -70,6 +71,7 @@ console.log("replacedString",replacedString);
 
   return (
     <>
+   
  <h2>{productData.name}</h2>
           <p>{productData.description}</p>
           <p>Price: ₹{productData.price.toFixed(2)}</p>

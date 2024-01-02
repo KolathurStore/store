@@ -1,6 +1,5 @@
 // sports.js
 import './ProductDetails.css';
-
 import React, { useState, useEffect,useRef } from 'react';
 import { Range } from 'react-range';
 import * as XLSX from 'xlsx';
@@ -10,7 +9,9 @@ import 'rc-slider/assets/index.css';
 
 import { Link } from 'react-router-dom';
 
-function Notebooks() {
+function ChartSticker() {
+
+    
   const buttonRef = useRef(null);
   const MIN = 0;
   const MAX = 100;
@@ -37,31 +38,34 @@ function Notebooks() {
 
  
 const [selectedItems, setSelectedItems] = useState([]);
-function handleClickfilter() {
+function handleClickfiltersindha(arraysfiltervalue) {
   // Your logic here
-  console.log('Button Clicked');
+  console.log("Received Array"+arraysfiltervalue);
   {
-    var retval=false;
+   
     console.log('print',filteredData)
    // if (!filteredData || filteredData.length === 0) return;
 
     console.log('print filteredDatadup',filteredData)
     const filteredResults = jsonDatasliced.filter((element) => {
+      var retval=false;
         console.log('print element',element)
       // You can customize the filtering logic here
       /*const title = element[7].toUpperCase();
       console.log('ret val',title.includes(filterValue.toUpperCase()))
       return title.includes(filterValue.toUpperCase());*/
-      console.log('selectedItems element',selectedItems)
-      console.log('selectedItems electedItems.size',selectedItems.length)
-      if(selectedItems.length>0 ){
+      console.log('selectedItems element',arraysfiltervalue)
+      console.log('selectedItems electedItems.size',arraysfiltervalue.length)
+      if(arraysfiltervalue.length>0 ){
         console.log('selectedItems inside')
-            selectedItems.forEach(e=>
+        arraysfiltervalue.forEach(e=>
                 {
                   console.log('selectedItems inside2'+e)
-                    const title = element[7].toUpperCase();
+                    const title = element[3].toUpperCase();
                     console.log('ret val',title.includes(e.toUpperCase()))
-                    retval= title.includes(e.toUpperCase());   
+                    if(title.includes(e.toUpperCase())){
+                      retval= true;
+                    }   
                      
                 }
               
@@ -71,19 +75,47 @@ function handleClickfilter() {
       else{
         retval= true
       }
-      console.log('is my console printed?'+retval)
+      console.log('is my console printed?'+retval+"999"+element[7])
       return retval
     });
     console.log('filteredResults',filteredResults)
     setFilteredData([ ...filteredResults]);
   }
 }
+const handleToggleItemsindha = (item) => 
+ {
+  console.log("Hey sindha type"+typeof(selectedItems))
+
+  var filterv1= []
+
+selectedItems.forEach(function (item) {
+	filterv1.push(item);
+});
+
+console.log("filterv1"+filterv1);
+ 
+  if (selectedItems.includes(item)) {
+    
+    filterv1.pop(item);
+    // If item is already selected, remove it
+    setSelectedItems(selectedItems.filter((selected) => selected !== item));
+    console.log("inside 1"+selectedItems)
+  } else {
+    filterv1.push(item);
+    // If item is not selected, add it
+    setSelectedItems([...selectedItems, item]);
+    console.log("inside 2"+selectedItems)
+  }
+  console.log("Hey sindha button clicked"+selectedItems)
+  handleClickfiltersindha(filterv1);
+ 
+};
 const MultiSelect = ({ options }) => {
-   //buttonRef.current.click();handleClickfilter
+   //buttonRef.current.click();
   
   
     const handleToggleItem = (item) => {
-      console.log("Hey sindha"+item)
+      
      
       if (selectedItems.includes(item)) {
         // If item is already selected, remove it
@@ -92,7 +124,8 @@ const MultiSelect = ({ options }) => {
         // If item is not selected, add it
         setSelectedItems([...selectedItems, item]);
       }
-     
+      console.log("Hey sindha button clicked"+item)
+      buttonRef.current.click();
     };
   
     return (
@@ -134,26 +167,30 @@ const MultiSelect = ({ options }) => {
 
   useEffect(() => {
     // Load the static XLSX file data
-    fetch('/Kolathur.xlsx')
+    fetch(process.env.PUBLIC_URL + '/ChartSticker.xlsx')
       .then((response) => response.arrayBuffer())
       .then((data) => {
+        console.log(data)
         const workbook = XLSX.read(data, { type: 'array' });
-        const sheetName = workbook.SheetNames[4];
+        const sheetName = workbook.SheetNames[0];
         const sheet = workbook.Sheets[sheetName];
         const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+        console.log('data'+jsonData)
          const jsonDatasliced  = jsonData.slice(1);
          var replacedjsonDatasliced=[]
          var Ruling=[]
-         jsonDatasliced.forEach(e=>{console.log("e",e[9],e[7])
+         jsonDatasliced.forEach(e=>{console.log("e",e[3],e[4])
          
          var maintemp=e;
-         var temp = ""+maintemp[9];
-         var temprulling=""+maintemp[7]
+         var temp = ""+maintemp[3];
+         var temprulling=""+maintemp[3]
          temp=temp.replace(/\//g, "Q~~~Q")
          maintemp[9]=temp;
          replacedjsonDatasliced.push(maintemp)
          Ruling.push(temprulling)
         })
+        console.log('Ruling',Ruling.sort())
+        Ruling=Ruling.sort()
         console.log('is my jsonData jsonDatasliced',jsonDatasliced)
          console.log('is my jsonData printed',replacedjsonDatasliced,Ruling)
          const Rule = new Set(Ruling);
@@ -191,7 +228,7 @@ const MultiSelect = ({ options }) => {
             selectedItems.forEach(e=>
                 {
                   console.log('selectedItems inside2'+e)
-                    const title = element[7].toUpperCase();
+                    const title = element[3].toUpperCase();
                     console.log('ret val',title.includes(e.toUpperCase()))
                     retval= title.includes(e.toUpperCase());   
                      
@@ -282,9 +319,31 @@ const MultiSelect = ({ options }) => {
       
       <h1>CARDS</h1>
       <h1>MultiSelect Example</h1>
-      
-     
+        
+      <div>
 
+
+
+
+      <h2>Selected Items: {selectedItems.join(', ')}</h2>
+        <ul>
+          {Ruling.map((item) => (
+            <li key={item}>
+              <label>
+                <input
+                  type="checkbox"
+                  value={item}
+                  checked={selectedItems.includes(item)}
+                  onChange={() => {handleToggleItemsindha(item) }}
+                />
+                {item}
+              </label>
+            </li>
+          ))}
+        </ul>
+      </div>
+     
+{/*
       <MultiSelect
       options={Ruling}
       value={selectedOptions}
@@ -296,9 +355,9 @@ const MultiSelect = ({ options }) => {
           Filter by Title:{' '}
           <input type="text" value={filterValue} onChange={handleFilterChange} />
         </label>
-        <button ref={buttonRef} onClick={handleClickfilter}>Apply Filter</button>
+        <button ref={buttonRef} onClick={handleClickfiltersindha}>Apply Filter</button>
       </div>
-
+          */}
       {filteredData && filteredData.length > 0 ? (
         <div>
           <h2>sports Data:</h2>
@@ -306,12 +365,16 @@ const MultiSelect = ({ options }) => {
           <div className="product-grid">
             {filteredData.map((row, index) => (
                 
-                <Link to={`/ProductDetails/${row[9]}`}>
+                <Link to={`/ProductDetails/${row[6]}/${'5'}/${row[2]}/${'row[0]'}/${'row[2]'}/${'row3'}`}>
               
                     
                 <div className="product-item">
-                  <img src={row[1]} alt="" className="product-image" />
-                  <h4>{row[7]}</h4>
+                 {/*} <img src={row[1]} alt="" className="product-image" />*/} 
+
+              
+
+                
+                  <h4>{row[2]}</h4>
                 </div>
               </Link>
             ))}
@@ -324,4 +387,4 @@ const MultiSelect = ({ options }) => {
   );
 }
 
-export default Notebooks;
+export default ChartSticker;
