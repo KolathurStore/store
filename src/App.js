@@ -24,17 +24,17 @@ const App = () => {
       
       <img src={myImage} alt="" padding='right' width="50px" height="60px"/>
         </Link>
-    {/*    <!--
+      
         <nav style={{ backgroundColor: '#333', padding: '10px' }}>
       <ul style={{ listStyleType: 'none', margin: 0, padding: 0, display: 'flex' }}>
         <li style={{ marginRight: '10px' }}><Link to="/" style={{ textDecoration: 'none', color: 'white', padding: '8px', borderRadius: '4px', transition: 'background-color 0.3s ease-in-out' }}>Home</Link></li>
-        <li style={{ marginRight: '10px' }}><a href="#" style={{ textDecoration: 'none', color: 'white', padding: '8px', borderRadius: '4px', transition: 'background-color 0.3s ease-in-out' }}>About</a></li>
+         {/*<li style={{ marginRight: '10px' }}><a href="#" style={{ textDecoration: 'none', color: 'white', padding: '8px', borderRadius: '4px', transition: 'background-color 0.3s ease-in-out' }}>About</a></li>
         <li style={{ marginRight: '10px' }}><a href="#" style={{ textDecoration: 'none', color: 'white', padding: '8px', borderRadius: '4px', transition: 'background-color 0.3s ease-in-out' }}>Contact</a></li>
         <li style={{ marginRight: '10px' }}><Link to="/CartDetails" style={{ textDecoration: 'none', color: 'white', padding: '8px', borderRadius: '4px', transition: 'background-color 0.3s ease-in-out' }}>Cart details</Link></li>
-      </ul>
+      */}  </ul>
     </nav>
-    -->
-  */}
+   
+
 
       <Routes>
         <Route path="/" element={<Home />} />
