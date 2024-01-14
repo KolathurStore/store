@@ -85,7 +85,13 @@ console.log("replacedString",replacedString);
             onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
           />
 
-          <img id="selectedImage" src={selectedImage} alt="Product Image" />
+          <img id="selectedImage"  style={{
+    width: '200%',
+    height: '100%',
+    objectFit: 'contain', // or 'cover' depending on your preference
+    display: 'block',
+    margin: 'auto',
+  }}src={selectedImage} alt="Product Image" />
         
           <div className="product-images_Ps" onClick={changeImage}>
           {productData.images.map((image, index) => (
@@ -103,9 +109,7 @@ console.log("replacedString",replacedString);
             Add to Cart
           </button>
 
-          <div>
-      <YouTube videoId={"l-_PUYlJRY8"} />
-    </div>
+         
         </>
 
         
