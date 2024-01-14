@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import CartDetails from './CartDetails';
 import Cards from './Cards';
 import Home from './Home';
+import Store from './Store'
 import Sports from './sports'; // Import your About component
 import Stationery from './Stationery'; 
 import ChartSticker from './ChartSticker'
@@ -37,7 +38,9 @@ const App = () => {
 
 
       <Routes>
-        <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home />} />
+        <Route path="/store" element={<Store />} />
+        
         <Route path="/Sports" element={<Sports />} />
         <Route path="/Cards" element={<Cards />} />
         <Route path="/CartDetails" element={<CartDetails />} />
