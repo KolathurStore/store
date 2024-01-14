@@ -86,7 +86,7 @@ console.log("replacedString",replacedString);
           />
 
           <img id="selectedImage"  style={{
-    width: '200%',
+    width: '100%',
     height: '100%',
     objectFit: 'contain', // or 'cover' depending on your preference
     display: 'block',
