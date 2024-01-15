@@ -252,81 +252,14 @@ const MultiSelect = ({ options }) => {
 
 
     
-    <div className="App">
-
-<>
-    <Slider range />
-  </>  
-
-  <div className="expandable-section">
-      <div className="header" onClick={toggleExpansion}>
-        <h2>Section Header</h2>
-        <span>{isExpanded ? '▼' : '►'}</span>
-      </div>
-      {isExpanded && (
-        <div className="content">
-          {/* Contents to be shown when expanded */}
-          <p>This is the content of the expandable section.</p>
-          <p>It can include any content you want to display.</p>
-        </div>
-      )}
-    </div>
-  <div className="multi-range-slider">
-      <Range
-        values={values}
-        step={10}
-        min={MIN}
-        max={MAX}
-        onChange={handleChange}
-        renderTrack={({ props, children }) => (
-          <div
-            {...props}
-            style={{
-              ...props.style,
-              height: '10px',
-              borderRadius: '5px',
-              backgroundColor: '#ddd',
-            }}
-          >
-            {children}
-          </div>
-        )}
-        renderThumb={({ props }) => (
-          <div
-            {...props}
-            style={{
-              ...props.style,
-              height: '20px',
-              width: '20px',
-              borderRadius: '50%',
-              backgroundColor: '#007bff',
-              boxShadow: '0 2px 2px rgba(0, 0, 0, 0.2)',
-            }}
-          />
-        )}
-      />
-      <div className="values-container">
-        {values.map((value, index) => (
-          <div key={index} className="value">
-            {value}
-          </div>
-        ))}
-      </div>
-    </div>
-  
-    
-
-      
-      <h1>CARDS</h1>
-      <h1>MultiSelect Example</h1>
-        
-      <div>
+    <div className="App" style={{ backgroundColor: 'white' }}>        
+      <div style={{ backgroundColor: 'white' }}>
 
 
 
 
-      <h2>Selected Items: {selectedItems.join(', ')}</h2>
-        <ul>
+      <h2>Starts With Picker : {selectedItems.join(', ')}</h2>
+      <ul style={{ columns: '4' }}>
           {Ruling.map((item) => (
             <li key={item}>
               <label>
@@ -360,7 +293,7 @@ const MultiSelect = ({ options }) => {
           */}
       {filteredData && filteredData.length > 0 ? (
         <div>
-          <h2>sports Data:</h2>
+          
 
           <div className="product-grid">
             {filteredData.map((row, index) => (
@@ -369,12 +302,10 @@ const MultiSelect = ({ options }) => {
               
                     
                 <div className="product-item">
-                 {/*} <img src={row[1]} alt="" className="product-image" />*/} 
+                 { <img src={row[1]} alt="" className="product-image" />}                         
+                  <h10 id="Title" style={{ color: 'black' }}>{row[2]}</h10>
 
-              
-
-                
-                  <h4>{row[2]}</h4>
+                  <h4 style={{ color: 'gray' }}>Price : (₹) 5</h4>
                 </div>
               </Link>
             ))}

@@ -1,19 +1,24 @@
-// sports.js
 
 import React, { useState, useEffect } from 'react';
 import * as XLSX from 'xlsx';
 import './ProductGrid.css';
-
 import {Link} from 'react-router-dom';
-function Stationery  ()  {
+function Store() {
+  const [isMenuVisible, setMenuVisibility] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuVisibility(!isMenuVisible);
+  };
   const [filteredData, setFilteredData] = useState(null);
+
+
   useEffect(() => {
     // Load the static XLSX file data
-    fetch('/Kolathur.xlsx')
+    fetch(process.env.PUBLIC_URL + '/Kolathur.xlsx')
       .then((response) => response.arrayBuffer())
       .then((data) => {
         const workbook = XLSX.read(data, { type: 'array' });
-        const sheetName = workbook.SheetNames[3];
+        const sheetName = workbook.SheetNames[1];
         const sheet = workbook.Sheets[sheetName];
         const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
         
@@ -22,48 +27,53 @@ function Stationery  ()  {
       .catch((error) => console.error('Error loading XLSX file:', error));
   }, []);
 
+
+
   if (filteredData && filteredData.length>0){
-    var ids=[];
-    var urls=[];
-    var prices=[];
-    var images=[];
-    var title=[];
-    var desc=[];
+   var ids=[];
+   var urls=[];
+   var prices=[];
+   var images=[];
+   var title=[];
+   var desc=[];
+   
+    console.log('d:'+filteredData);
+    var filteredDatadup =filteredData.slice(1,filteredData.length);
+    filteredDatadup.forEach(element => {
+    console.log('element:'+element[0]);
+    ids.push(element[0]);
+    urls.push(element[0]);
+    images.push(element[2]);
+    var teststring = "";
+teststring = teststring+element[1];
+    //var temptitle=(element[1]).toUpperCase();
     
-     console.log('d:'+filteredData);
-     var filteredDatadup =filteredData.slice(1,filteredData.length);
-     filteredDatadup.forEach(element => {
-     console.log('element:'+element[0]);
-     ids.push(element[0]);
-     urls.push(element[0]);
-     images.push(element[2]);
-     var teststring = "";
- teststring = teststring+element[1];
-     //var temptitle=(element[1]).toUpperCase();
-     
-     console.log('temptitle:'+teststring.toUpperCase);
-     title.push(element[1]);
-     prices.push(element[4]);
-     desc.push(element[5]);
-     console.log('urls[0]:'+urls[0]);
-    })
-     
-   }
+    console.log('temptitle:'+teststring.toUpperCase);
+    title.push(element[1]);
+    prices.push(element[4]);
+    desc.push(element[5]);
+    console.log('urls[0]:'+urls[0]);
+   })
+    
+  }
+ 
+
   return (
+    
     <div className="App">
-      <h1>CARDS</h1>
+      
 
 
       {filteredData && filteredData.length > 0 ? (
         <div>
-          <h2>sports Data:</h2>
+         
        
           <div className="product-grid">
       {urls.map((row,index) => (
      <Link to={images[index]}>
         <div key={index} className="product-item" >
-          <img src={row} alt="" className="product-image" />
-          <h4>{title[index]}</h4> 
+          <img src={process.env.PUBLIC_URL + row} alt="" className="product-image" />
+          <h10 style={{ color: 'black' }}>{title[index]}</h10> 
         </div>
         </Link>
         
@@ -78,6 +88,8 @@ function Stationery  ()  {
       )}
     </div>
   );
-};
+}
 
-export default Stationery;
+
+
+export default Store;

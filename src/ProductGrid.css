@@ -1,7 +1,10 @@
 .product-grid {
     display: grid;
+    padding-top: 1%;
     grid-template-columns: repeat(2, minmax(150px, 1fr)); /* Adjust minmax values as needed */
-    gap: 2px;
+    gap: 4px;
+    background-color: white;
+    
     /* You can adjust the size as needed */
      
     

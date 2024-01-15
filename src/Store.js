@@ -73,7 +73,7 @@ teststring = teststring+element[1];
      <Link to={images[index]}>
         <div key={index} className="product-item" >
           <img src={process.env.PUBLIC_URL + row} alt="" className="product-image" />
-          <h4>{title[index]}</h4> 
+          <h10 style={{ color: 'black' }}>{title[index]}</h10> 
         </div>
         </Link>
         
