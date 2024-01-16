@@ -19,7 +19,7 @@ const App = () => {
   return (
   
     
-    <Router>
+    <Router basename="/store">
      
       <Link to="/CartDetails">
       
