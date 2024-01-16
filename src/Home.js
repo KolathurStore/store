@@ -71,8 +71,8 @@ teststring = teststring+element[1];
       {urls.map((row,index) => (
      <Link to={images[index]}>
         <div key={index} className="product-item" >
-          <img src={process.env.PUBLIC_URL + row} alt="" className="product-image" />
-          <h4>{title[index]}</h4> 
+        <img style={{ borderRadius: '25px',  backgroundColor: '' } } src={process.env.PUBLIC_URL + row} alt="" className="product-image" />
+         <h3 style={{ color: 'black' }}>{title[index]}</h3> 
         </div>
         </Link>
         
