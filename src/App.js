@@ -18,7 +18,7 @@ const App = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const navigate = useNavigate(); // Using useNavigate directly
+  //const navigate = useNavigate(); // Using useNavigate directly
 
   useEffect(() => {
     // Fetch suggestions based on the input value (replace with your own fetching logic)
@@ -43,7 +43,7 @@ const App = () => {
   const handleChange = (selectedOption) => {
     setSelectedProduct(selectedOption);
     if (selectedOption) {
-      navigate(selectedOption.value);
+     // navigate(selectedOption.value);
     }
   };
 
