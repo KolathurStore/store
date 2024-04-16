@@ -76,7 +76,7 @@ const App = () => {
 
       <nav style={{ backgroundColor: '#333', padding: '10px' }}>
         <ul style={{ listStyleType: 'none', margin: 0, padding: 0, display: 'flex' }}>
-          <li style={{ marginRight: '10px' }}><Link to="/" style={{ textDecoration: 'none', color: 'white', padding: '8px', borderRadius: '4px', transition: 'background-color 0.3s ease-in-out' }}>Home</Link></li>
+          <li style={{ marginRight: '10px' }}><Link to="/" style={{ textDecoration: 'none', color: 'white', padding: '8px', borderRadius: '4px', transition: 'background-color 0.3s ease-in-out' }}>HomePage</Link></li>
         </ul>
       </nav>
 
