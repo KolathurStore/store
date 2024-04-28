@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './CartDetails.css'; 
+import app from './App';
 const CartDetails = () => {
+  const [isCartOpen, setIsCartOpen] = useState(false); 
 
+  const toggleCart = () => {
+    
+    setIsCartOpen(prevState => !prevState); 
+   
+  };
 
         const [phoneNumber, setPhoneNumber] = useState('+917871548004');
         const textRepresentation = JSON.stringify(localStorage.getItem('cart'), null, 2);
@@ -27,6 +34,7 @@ console.log(textRepresentation);
     existingCart.splice(index, 1);
     localStorage.setItem('cart', JSON.stringify(existingCart));
     displayCart();
+    window.location.reload();
   };
 
   const displayCart = () => {
@@ -67,10 +75,10 @@ console.log(textRepresentation);
       </div>
 
      <div>
-      <h1>Send SMS via WhatsApp</h1>
+      
 
       <a id="whatsappButton" href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`} target="_blank">
-        <button onClick={handleSendMessage}>Send WhatsApp Message</button>
+        <button className="green-button" onClick={handleSendMessage}>BUY NOW </button>
       </a>
     </div>
 

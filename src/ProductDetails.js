@@ -60,6 +60,7 @@ console.log("replacedString",replacedString);
     localStorage.setItem('cart', JSON.stringify(existingCart));
 
     alert('Product added to cart!');
+    window.location.reload();
   };
 
   const changeImage = (event) => {

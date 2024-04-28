@@ -1,0 +1,15 @@
+.carousel-container {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 300px; /* Adjust the height as needed */
+}
+
+.carousel-slide {
+  flex: 0 0 33.333%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 1s ease; /* Add transition for smooth sliding animation */
+}
+

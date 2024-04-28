@@ -65,3 +65,58 @@
   background-color: #555;
 }
 
+
+.Menubar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4%;
+  background-color: #333;
+  color: white;
+  padding: 100px;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+.cart-drawer {
+  overflow: auto; /* or 'scroll' */
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.cart-drawer.open {
+  right: 0;
+}
+
+.list-item {
+  width: 100px; /* Set the width of the <li> */
+  height: 100px; /* Set the height of the <li> */
+  overflow: hidden; /* Hide any overflow */
+}
+
+.list-item img {
+  width: 100%; /* Make the image fill the width of the <li> */
+  height: auto; /* Automatically adjust the height while maintaining aspect ratio */
+  display: block; /* Ensure the image behaves as a block element */
+}
+
+.container {
+  height: 7%;
+  display: flex; /* Use flexbox for horizontal layout */
+}
+
+.image-container {
+  flex: 1; /* Each image container takes equal space */
+  margin: 0 10px; /* Add margin between images */
+}
+
+.image-container img {
+  width: 100%; /* Make the image fill the container */
+  height: auto; /* Maintain aspect ratio */
+}

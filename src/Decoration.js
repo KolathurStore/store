@@ -4,16 +4,12 @@ import React, { useState, useEffect,useRef } from 'react';
 import * as XLSX from 'xlsx';
 import './ProductGrid.css';
 import 'rc-slider/assets/index.css';
-import InputRange from 'react-input-range';
-import { useParams } from 'react-router-dom';
-  import 'react-input-range/lib/css/index.css';
 
 import { Link } from 'react-router-dom';
 
-function ChartSticker() {
-  const { Price } = useParams();
-  
-  console.log("NAME"+Price); 
+function Decoration() {
+
+    
   const buttonRef = useRef(null);
   const MIN = 0;
   const MAX = 100;
@@ -87,7 +83,7 @@ function handleClickfiltersindha(arraysfiltervalue) {
 const handleToggleItemsindha = (item) => 
  {
   console.log("Hey sindha type"+typeof(selectedItems))
-  console.log("Hey sindha type"+item)
+
   var filterv1= []
 
 selectedItems.forEach(function (item) {
@@ -169,7 +165,7 @@ const MultiSelect = ({ options }) => {
 
   useEffect(() => {
     // Load the static XLSX file data
-    fetch(process.env.PUBLIC_URL + '/ChartSticker.xlsx')
+    fetch(process.env.PUBLIC_URL + '/Decoration.xlsx')
       .then((response) => response.arrayBuffer())
       .then((data) => {
         console.log(data)
@@ -178,17 +174,11 @@ const MultiSelect = ({ options }) => {
         const sheet = workbook.Sheets[sheetName];
         const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
         console.log('data'+jsonData)
-        const fillter=[];
          const jsonDatasliced  = jsonData.slice(1);
          var replacedjsonDatasliced=[]
          var Ruling=[]
          jsonDatasliced.forEach(e=>{console.log("e",e[3],e[4])
-         var areEqual = Price.toUpperCase() === e[3].toUpperCase();
-         if (areEqual){
-          fillter.push(e);
-          //handleToggleItemsindha(Price) ;
-          console.log('27-04-2024'+fillter);
-         }
+         
          var maintemp=e;
          var temp = ""+maintemp[3];
          var temprulling=""+maintemp[3]
@@ -206,9 +196,8 @@ const MultiSelect = ({ options }) => {
          let array = [...Rule];
          SetRuling(array)
          setjsonDatasliced(jsonDatasliced)
-       // setFilteredData(jsonDatasliced);
-       setFilteredData(fillter);
-        //handleToggleItem(Price) ;
+        setFilteredData(jsonDatasliced);
+       
       })
       .catch((error) => console.error('Error loading XLSX file:', error));
   }, []);
@@ -255,17 +244,13 @@ const MultiSelect = ({ options }) => {
     console.log('filteredResults',filteredResults)
     setFilteredData([ ...filteredResults]);
   };
-  const [rangeValues, setRangeValues] = useState({ min: 0, max: 400 }); const handleRangeChange = (values) => { setRangeValues(values); };
+  
 
   return (
 
 
     
-    <div className="App" style={{ backgroundColor: 'white' }}> 
-
-
-<h1>Hello React.</h1> <h2>Start editing to see some magic happen!</h2> <div> <h2>Range Picker Example</h2> <InputRange minValue={0} maxValue={400} step={20} value={rangeValues} onChange={handleRangeChange} /> <div> <p>Min Value: {rangeValues.min}</p> <p>Max Value: {rangeValues.max}</p> </div> </div> 
-
+    <div className="App" style={{ backgroundColor: 'white' }}>        
       <div style={{ backgroundColor: 'white' }}>
 
 
@@ -331,4 +316,4 @@ const MultiSelect = ({ options }) => {
   );
 }
 
-export default ChartSticker;
+export default Decoration;

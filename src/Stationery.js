@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import * as XLSX from 'xlsx';
 import './ProductGrid.css';
 import {Link} from 'react-router-dom';
-function Store() {
+function Store(Name) {
   const [isMenuVisible, setMenuVisibility] = useState(false);
 
   const toggleMenu = () => {
@@ -70,7 +70,7 @@ teststring = teststring+element[1];
        
           <div className="product-grid">
       {urls.map((row,index) => (
-     <Link to={images[index]}>
+     <Link to={images[index]+`/${'1'}`}>
         <div key={index} className="product-item" >
           <img src={process.env.PUBLIC_URL + row} alt="" className="product-image" />
           <h10 style={{ color: 'black' }}>{title[index]}</h10> 
@@ -79,7 +79,7 @@ teststring = teststring+element[1];
         
       ))}
     </div>
-          
+                    
    
                
         </div>
