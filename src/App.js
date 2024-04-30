@@ -86,7 +86,7 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <Router basename ="/store">
       <div>
         {/* Sliding drawer for the cart */}
         <div className={`cart-drawer ${isCartOpen ? 'open' : ''}`} ref={cartRef}>
@@ -139,7 +139,7 @@ const App = () => {
             </li></div>
    </ul>
       </nav>*/} 
-      <Routes basename ="/store">
+      <Routes>
       <Route path="/Home" element={<Home />} />
       <Route path="/" element={<Actualhome />} />
       
