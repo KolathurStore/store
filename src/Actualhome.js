@@ -1,12 +1,15 @@
 
 import Slider from './Slider';
+import image1 from './Categories/Stationery/Stationery.jpg';
+import image2 from './Categories/Stationery/Stationery.jpg';
+import image3 from './Categories/GiftsResized.jpg';
 const Actualhome = () => {
 
     
   const images = [
-    '/Categories/Stationery/Stationery.jpg',
-    '/Categories/GiftsResized.jpg',
-    '/Categories/CleaningResized.jpg',
+    image3,
+    image2,
+    image1,
     '/Categories/sportResized.jpg',
     '/Categories/DecorationResized.jpg',
     '/Categories/PackagingResized.jpg',

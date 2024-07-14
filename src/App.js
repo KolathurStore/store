@@ -12,7 +12,7 @@ import Stationery from './Stationery';
 import ChartSticker from './ChartSticker';
 import Notebooks from './Notebooks';
 import ProductDetails from './ProductDetails';
-
+import Disposable from './Disposable';
 import Decoration from './Decoration';
 
 import ChildComponent from './ChildComponent';
@@ -86,7 +86,8 @@ const App = () => {
   };
 
   return (
-    <Router basename ="/store">
+    <Router >
+      {/*basename ="/store"*/}
       <div>
         {/* Sliding drawer for the cart */}
         <div className={`cart-drawer ${isCartOpen ? 'open' : ''}`} ref={cartRef}>
@@ -151,6 +152,8 @@ const App = () => {
         <Route path="/Stationery" element={<Stationery />} />
         <Route path="/ChartSticker/:Price" element={<ChartSticker />} />
         <Route path="/Notebooks" element={<Notebooks />} />
+        <Route path="/Disposable" element={<Disposable />} />
+        
         <Route path="/child/:userId/:username/:urc" element={<ChildComponent />} />
         <Route path="/ProductDetails/:Price/:userId1/:userId2/:userId3/:userId4/:userId5" element={<ProductDetails />} />
       </Routes>

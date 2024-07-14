@@ -23,7 +23,7 @@ const Slider = ({ images,urls }) => {
         {images.map((image, index) => (
           
           <img key={index} src={image} alt={`Slide ${index + 1}`} />
-          
+        
         ))}
       </div>
       </Link>

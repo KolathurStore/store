@@ -1,8 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
 import * as XLSX from 'xlsx';
 import './ProductGrid.css';
 import {Link} from 'react-router-dom';
-function Home() {
+function Store(Name) {
   const [isMenuVisible, setMenuVisibility] = useState(false);
 
   const toggleMenu = () => {
@@ -17,10 +18,14 @@ function Home() {
       .then((response) => response.arrayBuffer())
       .then((data) => {
         const workbook = XLSX.read(data, { type: 'array' });
-        const sheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[sheetName];
-        const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-        
+       // const sheetName = workbook.SheetNames[5];
+        const worksheet = workbook.Sheets["Disposable"];
+
+        // Convert sheet to JSON
+        const jsonData = XLSX.utils.sheet_to_json(worksheet,{ header: 1 });
+       // const sheet = workbook.Sheets[sheetName];
+      //  const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+        console.log('json data:'+jsonData);
         setFilteredData(jsonData);
       })
       .catch((error) => console.error('Error loading XLSX file:', error));
@@ -29,6 +34,7 @@ function Home() {
 
 
   if (filteredData && filteredData.length>0){
+    console.log('json data:filteredData'+filteredData.length);
    var ids=[];
    var urls=[];
    var prices=[];
@@ -60,24 +66,32 @@ teststring = teststring+element[1];
   return (
     
     <div className="App">
+      
+    
 
       {filteredData && filteredData.length > 0 ? (
         <div>
          
        
           <div className="product-grid">
+          {console.log('actual url '+urls)}
       {urls.map((row,index) => (
-     <Link to={images[index]}>
+        
+     <Link to={images[index]+`/${'1'}`}>
         <div key={index} className="product-item" >
-        <img style={{ borderRadius: '25px',  backgroundColor: '' } } src={process.env.PUBLIC_URL + row} alt="" className="product-image" />
-        <img src="https://drive.google.com/uc?export=view&id=1fhhU2HTGbrSjiS4thQYt9gh1QhxTLWGq" alt="drive" />
-         <h3 style={{ color: 'black' }}>{title[index]}</h3> 
+        <iframe
+          src={"https://drive.google.com/file/d/"+row+"/preview"}
+          width="640"
+          height="480"
+          allow="autoplay"
+        ></iframe> 
+          <h10 style={{ color: 'black' }}>{title[index]}</h10> 
         </div>
         </Link>
         
       ))}
     </div>
-          
+                    
    
                
         </div>
@@ -90,4 +104,4 @@ teststring = teststring+element[1];
 
 
 
-export default Home;
+export default Store;
