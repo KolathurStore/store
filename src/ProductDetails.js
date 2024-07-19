@@ -23,21 +23,25 @@ const ProductDetails = () => {
   var urls= { Price }.Price;
   console.log("tag"+tag)
   console.log("tag"+urls)
+  var value=process.env.PUBLIC_URL;
+  urls= urls.replace(/Q~~~Q/g, '/');
 
-  urls= urls.replace(/Q~~~Q/g, "/");
   var replacedString = urls.replace(/Q~~~Q/g, '/');
-
+  console.log("env"+value);
 console.log("replacedString",replacedString);
   
-  const myArray = replacedString.split("~~~~");
-  console.log('myArray',myArray)
+  var myArray = replacedString.split("~~~~");
+  for (let i = 0; i < myArray.length; i++) {
+    myArray[i] = value +myArray[i] ;
+  }
+  console.log('Value',myArray)
 
 
 
 
   const [quantity, setQuantity] = useState(1);
-  const [selectedImage, setSelectedImage] = useState(myArray[0]);
-  
+  const [selectedImage, setSelectedImage] =  useState(myArray[0]);
+  console.log('selectedImage',selectedImage)
   
   const productData = {
     name: {userId2}.userId2,
@@ -75,7 +79,7 @@ console.log("replacedString",replacedString);
    
  <h2>{productData.name}</h2>
           <p>{productData.description}</p>
-          <p>Price: ₹{productData.price.toFixed(2)}</p>
+          {/* <p>Price: ₹{productData.price.toFixed(2)}</p> */}
 
           <label htmlFor="quantity">Quantity:</label>
           <input
@@ -92,7 +96,7 @@ console.log("replacedString",replacedString);
     objectFit: 'contain', // or 'cover' depending on your preference
     display: 'block',
     margin: 'auto',
-  }}src={selectedImage} alt="Product Image" />
+  }}src=  {selectedImage} alt="Product Image" />
         
           <div className="product-images_Ps" onClick={changeImage}>
           {productData.images.map((image, index) => (

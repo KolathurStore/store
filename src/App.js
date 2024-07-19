@@ -86,7 +86,7 @@ const App = () => {
   };
 
   return (
-    <Router >
+    <Router basename ="/store" >
       {/*basename ="/store"*/}
       <div>
         {/* Sliding drawer for the cart */}
